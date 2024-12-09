@@ -50,3 +50,6 @@ gem "bcrypt"
 
 # Para verificar se o cpf é valido
 gem 'cpf_cnpj'
+
+# Para autenticação JWT
+gem 'jwt'

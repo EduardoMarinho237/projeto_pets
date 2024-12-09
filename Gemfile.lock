@@ -103,6 +103,8 @@ GEM
     irb (1.14.1)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jwt (2.9.3)
+      base64
     logger (1.6.2)
     loofah (2.23.1)
       crass (~> 1.0.2)
@@ -211,6 +213,7 @@ DEPENDENCIES
   bootsnap
   cpf_cnpj
   debug
+  jwt
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.1.5)
