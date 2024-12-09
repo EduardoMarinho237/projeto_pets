@@ -14,6 +14,18 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  # GET /users/username/:username (get by parâmetro que não é o ID)
+  def show_by_username
+  user = User.find_by(username: params[:username])
+  
+  if user
+    render json: user
+  else
+    render json: { error: 'Usuário não encontrado' }, status: :not_found
+  end
+  end
+
+
   # POST /users
   def create
     @user = User.new(user_params)
