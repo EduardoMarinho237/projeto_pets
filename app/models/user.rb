@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  # require 'cpf_cnpj'
+  has_many :pets
 
   validates :username,
             presence: { message: "Username cannot be blank." },
