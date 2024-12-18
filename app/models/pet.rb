@@ -21,4 +21,8 @@ class Pet < ApplicationRecord
     end
   end
 
+  # Verifica se o pet pertence ao usuário especificado
+  def owned_by?(user)
+    self.user_id == user.id
+  end
 end
