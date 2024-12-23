@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_12_040216) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_23_141502) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "consultations", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.date "date"
+    t.string "consultation_type"
+    t.string "veterinarian"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_consultations_on_pet_id"
+  end
 
   create_table "pets", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,6 +35,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_040216) do
     t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
     t.index ["user_id"], name: "index_pets_on_user_id"
   end
 
@@ -36,5 +51,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_12_040216) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "vaccinations", force: :cascade do |t|
+    t.bigint "pet_id", null: false
+    t.string "vaccine_type"
+    t.date "application_date"
+    t.date "next_dose_date"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_vaccinations_on_pet_id"
+  end
+
+  add_foreign_key "consultations", "pets"
   add_foreign_key "pets", "users"
+  add_foreign_key "vaccinations", "pets"
 end

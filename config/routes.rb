@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :vaccinations
+  resources :consultations
   resources :pets
   resources :users
   post 'login', to: 'auth#login'

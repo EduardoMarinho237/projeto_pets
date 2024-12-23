@@ -1,6 +1,9 @@
 class Pet < ApplicationRecord
   belongs_to :user
 
+  has_many :consultations, dependent: :destroy
+  has_many :vaccinations, dependent: :destroy
+
   validates :name, presence: { message: "Name cannot be blank." }
   validates :species, presence: { message: "Species cannot be blank." }
 
